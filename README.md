@@ -1,16 +1,86 @@
-# dio_lesson
+# エンドポイント
 
-A new Flutter project.
+## トークン
 
-## Getting Started
+```
+---------------------------------
 
-This project is a starting point for a Flutter application.
+Loginエンドポイント
+post
+url: auth/jwt/create
+data : {
+  username: String,
+  password: String,
+}
+レスポンス
+access: String
+refresh: String
 
-A few resources to get you started if this is your first Flutter project:
+---------------------------------
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Refreshエンドポイント
+post
+url: auth/jwt/refresh
+data : {
+  refresh: String,
+}
+レスポンス
+access: String
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---------------------------------
+```
+
+## Todo
+
+```
+accessToken必要
+ヘッダー
+{
+  'Authorization': 'Bearer $accessToken',
+}
+---------------------------------
+
+Todo一覧取得エンドポイント
+get
+url: api/todos
+レスポンス
+access: String
+refresh: String
+
+---------------------------------
+
+Todo作成エンドポイント
+post
+url: api/todo/create
+data : {
+  text: String,
+}
+レスポンス
+id: String
+text: String
+isDone: String
+
+---------------------------------
+
+Todo削除エンドポイント
+post
+url: api/todo/delete
+data : {
+  id: String,
+}
+レスポンス
+200
+
+---------------------------------
+
+TodoTggleエンドポイント
+post
+url: api/todo/update_is_done
+data : {
+  id: String,
+}
+レスポンス
+200
+
+---------------------------------
+```
